@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CameraController : Singleton<CameraController>
 {
+    public bool followTarget = true;
     public Transform target;
     public Vector3 offset;
     public float speed;
@@ -29,7 +30,7 @@ public class CameraController : Singleton<CameraController>
 
     private void FixedUpdate()
     {
-        if (!target) return;
+        if (!target || !followTarget) return;
 
         FollowTarget();
         HandleZoom();
